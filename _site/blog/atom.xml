@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+	<title>Rishabh Gupta's Blog</title>
+	<link href="http://mr-easy.github.io/blog/atom.xml" rel="self"/>
+	<link href="http://mr-easy.github.io/blog"/>
+	<updated>2017-06-25T23:10:24+05:30</updated>
+	<id>http://mr-easy.github.io/blog</id>
+	<author>
+		<name>Rishabh Gupta</name>
+		<email>rishabhg1997@gmail.com</email>
+	</author>
+
+	
+		<entry>
+			<title>Creating Spritesheet Animation in HTML5 canvas using Javascript</title>
+			<link href="http://mr-easy.github.io/blog/2017/06/25/creating-spritesheet-animation-in-html5-canvas-using-javascript"/>
+			<updated>2017-06-25T00:00:00+05:30</updated>
+			<id>http://mr-easy.github.io/blog/2017/06/25/creating-spritesheet-animation-in-html5-canvas-using-javascript</id>
+			<content type="html">&lt;h5&gt;Introduction&lt;/h5&gt;
+&lt;p&gt;In this article, I am going to tell you how to create spritesheet animations in HTML5 canvas using javascript. You can use these for creating animations in your HTML5 game. I will be using javascript(as the title says), but you can use this concept in other canvas, like canvas in Android(java).&lt;/p&gt;
+
+&lt;h5&gt;What are we creating?&lt;/h5&gt;
+&lt;p&gt;It's better if we know what we are going to create. So here you go:&lt;br /&gt;
+
+&lt;/p&gt;
+
+&lt;h5&gt;Prerequisites&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;What are sprites, spritesheet and spritesheet animation?&lt;/h5&gt;
+&lt;p&gt;Animations consist of a series of images(or frames) which are shown very quickly so the viewer perceive it as moving(instead of still image). So each of the image(or frame) in an animation is known as &lt;b&gt;sprite&lt;/b&gt;. It  can be something like this &lt;img /&gt;&amp;lt;/img&amp;gt; or like this &lt;img /&gt;&amp;lt;/img&amp;gt;&lt;br /&gt;
+A series of these sprites laid down in a single sheet is what we say as &lt;b&gt;spritesheet&lt;/b&gt;, like this &lt;img /&gt;&amp;lt;/img&amp;gt;. Just Google &quot;spritesheet&quot;, and you gonna get a lot of them.&lt;br /&gt;
+Animation created using a spritesheet is called &lt;b&gt;spritesheet animation&lt;/b&gt;, this is what we are gonna acheive.&lt;br /&gt;
+Why to use a single image for all the sprites? Why not we just have different images and display them one by one? Hmm... We can do that also, but using spritesheets have their own advantages. Having multiple images requires handling each of them individually and requires more memeory, and more images need to be loaded. While in spritesheet we need to load a single image, and can use it multiple times. Spritesheets have been in games since a long time, one classic example is pacman.&lt;/p&gt;
+
+&lt;h5&gt;Concept&lt;/h5&gt;
+&lt;p&gt;We will draw a single sprite at a time. Which will be pointed by some index pointer.&lt;br /&gt;
+&lt;img /&gt;
+And after a certain duration, we will increment our index pointer. And keep doing this, untill we reach the last frame, or in the case of a looping animation we will set the index back to 0.(indexing starts from 0).&lt;br /&gt;
+The &lt;b&gt;drawImage()&lt;/b&gt; method of context allows us to draw an image cropped(clipped) and resized and at any (x, y) coordinate on the canvas. It takes the following parameters:&lt;br /&gt;context.drawImage(img, sx, sy, swidth, sheight, x, y, width, height)&lt;br /&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;img&lt;/td&gt;&lt;td&gt;the image to be drawn&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;sx&lt;/td&gt;&lt;td&gt;the x coordinate where to start clipping&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;sy&lt;/td&gt;&lt;td&gt;the y coordinate where to start clipping&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;x&lt;/td&gt;&lt;td&gt;The x coordinate on the canvas where the image to be drawn&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;y&lt;/td&gt;&lt;td&gt;The y coordinate on the canvas where the image to be drawn&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;width&lt;/td&gt;&lt;td&gt;The width of the  image(resizing it)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;height&lt;/td&gt;&lt;td&gt;The height of the  image(resizing it)&lt;/td&gt;&lt;/tr&gt;
+
+
+
+&lt;/table&gt;
+
+&lt;h5&gt;Implementation&lt;/h5&gt;
+
+&lt;h5&gt;What's that?&lt;/h5&gt;
+
+&lt;h5&gt;A note on HTML5 canvas&lt;/h5&gt;
+
+&lt;h5&gt;How to fix it?&lt;/h5&gt;
+
+&lt;h5&gt;Final note&lt;/h5&gt;
+
+&lt;h5&gt;References&lt;/h5&gt;
+</content>
+		</entry>
+	
+		<entry>
+			<title>Rishabh Gupta(mr-easy), Launches Site</title>
+			<link href="http://mr-easy.github.io/blog/2017/06/22/rishabh-gupta-site-launched"/>
+			<updated>2017-06-22T00:00:00+05:30</updated>
+			<id>http://mr-easy.github.io/blog/2017/06/22/rishabh-gupta-site-launched</id>
+			<content type="html">&lt;p&gt;Well. Finally got around to putting this old website together. Neat thing about it - powered by &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; and I can use Markdown to author my posts. It actually is a lot easier than I thought it was going to be.&lt;/p&gt;
+</content>
+		</entry>
+	
+
+</feed>
