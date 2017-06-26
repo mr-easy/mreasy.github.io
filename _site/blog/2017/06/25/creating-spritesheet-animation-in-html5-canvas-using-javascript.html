@@ -17,7 +17,10 @@
 			</nav>
 			<div class="container">
 			
-			<h1>Creating Spritesheet Animation in HTML5 canvas using Javascript</h1>
+			<!--css for code highlight-->
+<link href="/css/syntax.css" rel="stylesheet">
+
+<h1>Creating Spritesheet Animation in HTML5 canvas using Javascript</h1>
 <p class="meta">25 Jun 2017</p>
 
 <div class="post">
@@ -26,7 +29,7 @@
 
 <h3>What are we creating?</h3>
 <p>It's better if we know what we are going to create. So here you go:<br />
-
+<center><canvas id="canvas1" height="250px" width="300px" style="border: 2px solid black"></canvas></center>
 </p>
 
 <h3>Prerequisites</h3>
@@ -45,7 +48,9 @@
 <p><img src="http://localhost:4000/files/blog/spritesheet/explain.png" width="100%" /></p>
 <p>And after a certain duration, we will increment our index pointer. And keep doing this, untill we reach the last frame, or in the case of a looping animation we will set the index back to 0.(indexing starts from 0).</p>
 <p>The <b>drawImage()</b> method of context allows us to draw an image cropped(clipped) and resized and at any (x, y) coordinate on the canvas. It takes the following parameters:<br />
-<pre>context.drawImage(img, sx, sy, swidth, sheight, x, y, width, height)</pre>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">context</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">sx</span><span class="p">,</span> <span class="nx">sy</span><span class="p">,</span> <span class="nx">swidth</span><span class="p">,</span> <span class="nx">sheight</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span></code></pre></figure>
+
 <table>
 <tr><td>img</td><td>The image to be drawn</td></tr>
 <tr><td>sx</td><td>The x coordinate where to start clipping</td></tr>
@@ -61,150 +66,280 @@
 
 <h3>Implementation</h3>
 <p>Let's start coding it. Create an HTML file and add a canvas to it. Like this:</p>
-<pre>
-&lt;!doctype HTML&gt;&#10;&lt;Head&gt;&#10;    &lt;title&gt;Spritesheet Animation&lt;/title&gt;&#10;&lt;/Head&gt;&#10;&lt;Body&gt;&#10;    &lt;canvas id=&#34;canvasHolder&#34; height=&#34;250px&#34; width=&#34;300px&#34; style=&#34;border: 2px solid black&#34;&gt;&lt;/canvas&gt;&#10;    &lt;script src=&#34;game.js&#34;&gt;&lt;/script&gt;&#10;&lt;/Body&gt;&#10;&lt;/HTML&gt;&#10;
-</pre>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="cp">&lt;!doctype HTML&gt;</span>
+<span class="nt">&lt;Head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Spritesheet Animation<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/Head&gt;</span>
+<span class="nt">&lt;Body&gt;</span>
+    <span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"canvasHolder"</span> <span class="na">height=</span><span class="s">"250px"</span> <span class="na">width=</span><span class="s">"300px"</span> <span class="na">style=</span><span class="s">"border: 2px solid black"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"game.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/Body&gt;</span>
+<span class="nt">&lt;/HTML&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
 <p>You can adjust the size of canvas by changing the width and height attributes. If you dont's specify these attributes, the browser by default creates the canvas with a width of 300 pixels and a height of 150 pixels.</p>
 <p>Let's create the script file. Create a new game.js file in the same directory as your html file. First we need to get the canvas element and it's context to draw something on the canvas.</p>
-<pre>
-var canvas, context;
-window.onload = function() {
-    canvas = document.getElementById("canvasHolder");
-    context = canvas.getContext("2d");
-}
-</pre>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">canvas</span><span class="p">,</span> <span class="nx">context</span><span class="p">;</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"canvasHolder"</span><span class="p">);</span>
+    <span class="nx">context</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">"2d"</span><span class="p">);</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
 <p>Note that I am getting the canvas in the onload method. This will make sure that the canvas is loaded before being getting it.</p>
 <p>Now let's create an object which represents an object inside the game. I am going to call it <b>GameObject</b>. Think of a GameObject as <em>anything</em> that is in your game. Everything in your game is considered as a single GameObject. It is your player, the enemies, the trees, pickups, etc. All these GameObjects will be updated and drawn on the canvas in every frame refresh, in a continous loop <b>"THE GAME LOOP"</b>. The game loop is a continous cycle that keeps on looping untill the game ends. Think of it like this, in animated movies a loop is there which keeps drawing the frames on the screen. In games, other than just drawing frames on screen, we also have to do some(a lot) of calculations depending on player's behaviour. So, we have two things in our loop, update and draw. i.e. update all the GameObjects and draw them all.</p>
-<pre>
-loop {
-    ...
-    update()
-    draw()
-    ...
-}
-</pre>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="nx">loop</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="nx">update</span><span class="p">()</span>
+    <span class="nx">draw</span><span class="p">()</span>
+    <span class="p">...</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
 <p>All of these GameObjects will have an image(the Spritesheet)which will be used for drawing, a coordinate representing the position on the canvas(or in the game world), size, and some other attributes that will help in drawing its sprite. You will need to add a lot of attributes once your game starts getting complex. For now, I am keeping it simple enough to acheive our goal. Here's the GameObject constructor:</p>
-<pre>
-//GameObject constructor
-function GameObject(spritesheet, x, y, width, height, timePerFrame, numberOfFrames) {
-    this.spritesheet = spritesheet;             //the spritesheet image
-    this.x = x;                                 //the x coordinate of the object
-    this.y = y;                                 //the y coordinate of the object
-    this.width = width;                         //width of spritesheet
-    this.height = height;                       //height of spritesheet
-    this.timePerFrame = timePerFrame;           //time in(ms) given to each frame
-    this.numberOfFrames = numberOfFrames || 1;  //number of frames(sprites) in the spritesheet, default 1
 
-    //current frame index pointer
-    this.frameIndex = 0;
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></td><td class="code"><pre><span class="c1">//GameObject constructor</span>
+<span class="kd">function</span> <span class="nx">GameObject</span><span class="p">(</span><span class="nx">spritesheet</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">timePerFrame</span><span class="p">,</span> <span class="nx">numberOfFrames</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">spritesheet</span> <span class="o">=</span> <span class="nx">spritesheet</span><span class="p">;</span>             <span class="c1">//the spritesheet image</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>                                 <span class="c1">//the x coordinate of the object</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>                                 <span class="c1">//the y coordinate of the object</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">width</span><span class="p">;</span>                         <span class="c1">//width of spritesheet</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">height</span><span class="p">;</span>                       <span class="c1">//height of spritesheet</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">timePerFrame</span> <span class="o">=</span> <span class="nx">timePerFrame</span><span class="p">;</span>           <span class="c1">//time in(ms) given to each frame</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">numberOfFrames</span> <span class="o">=</span> <span class="nx">numberOfFrames</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//number of frames(sprites) in the spritesheet, default 1</span>
 
-    //time the frame index was last updated
-    this.lastUpdate = Date.now();
+    <span class="c1">//current frame index pointer</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">frameIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-    //to update
-    this.update = function() {
-        if(Date.now() - this.lastUpdate &gt;= this.timePerFrame) {
-            this.frameIndex++;
-            if(this.frameIndex &gt;= this.numberOfFrames) {
-                this.frameIndex = 0;
-            }
-            this.lastUpdate = Date.now();
-        }
-    }
+    <span class="c1">//time the frame index was last updated</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">lastUpdate</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
 
-    //to draw on the canvas, parameter is the context of the canvas to be drawn on
-    this.draw = function(context) {
-        context.drawImage(this.spritesheet,
-                          this.frameIndex*this.width/this.numberOfFrames,
-                          0,
-                          this.width/this.numberOfFrames,
-                          this.height,
-                          x,
-                          y,
-                          this.width/this.numberOfFrames,
-                          this.height);
-    }
-}
-</pre>
+    <span class="c1">//to update</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">lastUpdate</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">timePerFrame</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">frameIndex</span><span class="o">++</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">frameIndex</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">numberOfFrames</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">frameIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">lastUpdate</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//to draw on the canvas, parameter is the context of the canvas to be drawn on</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">context</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">spritesheet</span><span class="p">,</span>
+                          <span class="k">this</span><span class="p">.</span><span class="nx">frameIndex</span><span class="o">*</span><span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfFrames</span><span class="p">,</span>
+                          <span class="mi">0</span><span class="p">,</span>
+                          <span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfFrames</span><span class="p">,</span>
+                          <span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">,</span>
+                          <span class="nx">x</span><span class="p">,</span>
+                          <span class="nx">y</span><span class="p">,</span>
+                          <span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="k">this</span><span class="p">.</span><span class="nx">numberOfFrames</span><span class="p">,</span>
+                          <span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
 <p>And here's the game loop code with update and draw methods:</p>
-<pre>
-//The Game Loop
-function loop() {
-    update();
-    draw();
-    requestAnimationFrame(loop);
-}
 
-//update function to update all the GameObjects
-function update() {
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="c1">//The Game Loop</span>
+<span class="kd">function</span> <span class="nx">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">update</span><span class="p">();</span>
+    <span class="nx">draw</span><span class="p">();</span>
+    <span class="nx">requestAnimationFrame</span><span class="p">(</span><span class="nx">loop</span><span class="p">);</span>
+<span class="p">}</span>
 
-}
+<span class="c1">//update function to update all the GameObjects</span>
+<span class="kd">function</span> <span class="nx">update</span><span class="p">()</span> <span class="p">{</span>
 
-//draw method for drawing everything on canvas
-function draw() {
+<span class="p">}</span>
 
-}
-</pre>
+<span class="c1">//draw method for drawing everything on canvas</span>
+<span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
 <p>Currently the update and draw methods are empty. Since we do not have any game object. So let's create one.</p>
-<pre>
-//our hero
-var hero;
-var heroSpritesheet = new Image();
-heroSpritesheet.src = "heroSpritesheet.png";
 
-window.onload = function() {
-    canvas = document.getElementById("canvasHolder");
-    context = canvas.getContext("2d");
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="c1">//our hero</span>
+<span class="kd">var</span> <span class="nx">hero</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">heroSpritesheet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+<span class="nx">heroSpritesheet</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"heroSpritesheet.png"</span><span class="p">;</span>   <span class="c1">//provide the path to the image</span>
 
-    hero = new GameObject(heroSpritesheet,
-                              0,
-                              0,
-                              1536,
-                              256,
-                              90,
-                              6);
-}
-</pre>
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"canvasHolder"</span><span class="p">);</span>
+    <span class="nx">context</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s2">"2d"</span><span class="p">);</span>
+
+    <span class="nx">hero</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GameObject</span><span class="p">(</span><span class="nx">heroSpritesheet</span><span class="p">,</span>  <span class="c1">//the spritesheet image</span>
+                              <span class="mi">0</span><span class="p">,</span>            <span class="c1">//x position of hero</span>
+                              <span class="mi">0</span><span class="p">,</span>            <span class="c1">//y position of hero</span>
+                              <span class="mi">1536</span><span class="p">,</span>         <span class="c1">//total width of spritesheet image in pixels</span>
+                              <span class="mi">256</span><span class="p">,</span>          <span class="c1">//total height of spritesheet image in pixels</span>
+                              <span class="mi">90</span><span class="p">,</span>           <span class="c1">//time(in ms) duration between each frame change (experiment with it to get faster or slower animation)</span>
+                              <span class="mi">6</span><span class="p">);</span>           <span class="c1">//number of sprites in the spritesheet</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
 <p>What next? Add the first loop call in the onload method, just before the end of it.</p>
-<pre>
-window.onload = function() {
-    ...
-    //call the game loop
-    loop();
-}
-</pre>
-<p>Hmm.. I dont see anything. Oh! remember we need to update and draw all the gameobjects. Add call to hero's update and draw methods at update() and draw() respectivily.</p>
-<pre>
-//update function to update all the GameObjects
-function update() {
-    hero.update();
-}
 
-//draw method for drawing everything on canvas
-function draw() {
-    hero.draw(context);
-}
-</pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="c1">//call the game loop</span>
+    <span class="nx">loop</span><span class="p">();</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Hmm.. I dont see anything. Oh! remember we need to update and draw all the gameobjects. Add call to hero's update and draw methods at update() and draw() respectivily.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="c1">//update function to update all the GameObjects</span>
+<span class="kd">function</span> <span class="nx">update</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">hero</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//draw method for drawing everything on canvas</span>
+<span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">hero</span><span class="p">.</span><span class="nx">draw</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
 <p>Great! Open the HTML page in your favourite browser and see the action.</p>
 <h3>What's that?</h3>
+<center><canvas id="canvas2" height="250px" width="300px" style="border: 2px solid black"></canvas></center>
 <p>That's not exactly what I showed at the beginning. Something's not right.</p>
 <h3>A note on HTML5 canvas</h3>
 <p>The HTML5 canvas is just a drawing canvas. It draws the pixels where you said it to, but don't remember anything. It draws the image, and keeps drawing over it again and again. So, we see the remainng part of the previous images when new image is drawn over it.</p>
 
 <h3>How to fix it?</h3>
-<p>Fixing it is very simple. All we need to do is, before drawing the image, we have to clear the canvas. It can be done by context.clearRect() method. It clears the ractangular area defined by the parameters (x, y, width, height). Add the following in the draw method:</p>
-<pre>
-function draw() {
-    context.clearRect(0,0,canvas.width, canvas.height);
-    ...
-}
-</pre>
-<p>In case you are drawing a backgroundbefore the character, them you don't need to clear the canvas. Since, the background image covers the whole canvas and overdraws on all the previous images.</p>
+<p>Fixing it is very simple. All we need to do is, before drawing the image, we have to clear the canvas. It can be done by context.clearRect() method. It clears the rectangular area defined by the parameters (x, y, width, height). Add the following in the draw method:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">draw</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">context</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>In case you are drawing a background (which should be drawn first before drawing any other game object), then you don't need to clear the canvas. Since, the background image covers the whole canvas and overdraws on all the previous images.</p>
 
 <h3>Final note</h3>
-<p>Hope this article helped you. I encourage you to try and experiment yourself. You can do a lot using sprites. Like this:</p>
+<p>This is it forthis article, hope it helped you. I encourage you to try and experiment yourself. You can do a lot using sprites. Like this:</p>
+<center><canvas id="canvas3" height="250px" width="500px" style="border: 2px solid black"></canvas></center>
+
 <p>I used spritesheet animations in <a href="https://ekshikha-gamificationframework.github.io/Pac-Man-Maths-Game/">this game</a>.</p>
 <h3>References</h3>
+<ul>
+<li>This awesome sprite sheet is taken from <a href="https://www.codeandweb.com/">codeandweb.com</a>. Check out their nice tutorial on <a href="https://www.codeandweb.com/texturepacker/tutorials/how-to-create-a-sprite-sheet">How to create a sprite sheet</a> to create your own spritesheets.</li>
+<li>Want to read another article on spritesheet animations, see <a href="http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/">this</a> one.</li>
+</ul>
+<script>var imgSrc = "http://localhost:4000/files/blog/spritesheet/heroSpritesheet.png";</script>
+
+<script src="http://localhost:4000/files/blog/spritesheet/script.js"></script>
+
 
 </div>
 <!-- Post comments -->
@@ -229,7 +364,7 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	 
+
 </div>
 
 			

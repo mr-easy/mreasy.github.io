@@ -1,3 +1,6 @@
 name: Rishabh Gupta
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+syntax-highlighting:
+  enabled : true
+  css: syntax.css
