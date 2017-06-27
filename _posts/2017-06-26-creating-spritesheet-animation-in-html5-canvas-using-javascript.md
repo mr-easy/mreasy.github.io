@@ -204,5 +204,11 @@ function draw() {
 <li>This awesome sprite sheet is taken from <a href="https://www.codeandweb.com/">codeandweb.com</a>. Check out their nice tutorial on <a href="https://www.codeandweb.com/texturepacker/tutorials/how-to-create-a-sprite-sheet">How to create a sprite sheet</a> to create your own spritesheets.</li>
 <li>Want to read another article on spritesheet animations, see <a href="http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/">this</a> one.</li>
 </ul>
-<script>var imgSrc = "{{ site.url }}/files/blog/spritesheet/heroSpritesheet.png";</script>
+<script>
+var imgSrc = "{{ site.url }}/files/blog/spritesheet/heroSpritesheet.png";
+var redSpriteSrc = "{{ site.url }}/files/blog/spritesheet/red.png";
+var blueSpriteSrc = "{{ site.url }}/files/blog/spritesheet/blue.png";
+var greenSpriteSrc = "{{ site.url }}/files/blog/spritesheet/green.png";
+var orangeSpriteSrc = "{{ site.url }}/files/blog/spritesheet/orange.png";
+</script>
 <script src="{{ site.url }}/files/blog/spritesheet/script.js"></script>

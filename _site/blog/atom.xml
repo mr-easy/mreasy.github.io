@@ -4,7 +4,7 @@
 	<title>Rishabh Gupta's Blog</title>
 	<link href="http://mr-easy.github.io/blog/atom.xml" rel="self"/>
 	<link href="http://mr-easy.github.io/blog"/>
-	<updated>2017-06-27T14:19:39+05:30</updated>
+	<updated>2017-06-27T16:42:39+05:30</updated>
 	<id>http://mr-easy.github.io/blog</id>
 	<author>
 		<name>Rishabh Gupta</name>
@@ -329,7 +329,13 @@
 &lt;li&gt;This awesome sprite sheet is taken from &lt;a href=&quot;https://www.codeandweb.com/&quot;&gt;codeandweb.com&lt;/a&gt;. Check out their nice tutorial on &lt;a href=&quot;https://www.codeandweb.com/texturepacker/tutorials/how-to-create-a-sprite-sheet&quot;&gt;How to create a sprite sheet&lt;/a&gt; to create your own spritesheets.&lt;/li&gt;
 &lt;li&gt;Want to read another article on spritesheet animations, see &lt;a href=&quot;http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/&quot;&gt;this&lt;/a&gt; one.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;script&gt;var imgSrc = &quot;http://localhost:4000/files/blog/spritesheet/heroSpritesheet.png&quot;;&lt;/script&gt;
+&lt;script&gt;
+var imgSrc = &quot;http://localhost:4000/files/blog/spritesheet/heroSpritesheet.png&quot;;
+var redSpriteSrc = &quot;http://localhost:4000/files/blog/spritesheet/red.png&quot;;
+var blueSpriteSrc = &quot;http://localhost:4000/files/blog/spritesheet/blue.png&quot;;
+var greenSpriteSrc = &quot;http://localhost:4000/files/blog/spritesheet/green.png&quot;;
+var orangeSpriteSrc = &quot;http://localhost:4000/files/blog/spritesheet/orange.png&quot;;
+&lt;/script&gt;
 
 &lt;script src=&quot;http://localhost:4000/files/blog/spritesheet/script.js&quot;&gt;&lt;/script&gt;
 
