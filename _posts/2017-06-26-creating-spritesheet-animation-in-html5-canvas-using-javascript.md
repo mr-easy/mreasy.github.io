@@ -20,7 +20,7 @@ date: 2017-06-26
 
 <h3>What are sprites, spritesheet and spritesheet animation?</h3>
 <p>Animations consist of a series of images(or frames) which are shown very quickly so the viewer perceive it as moving(instead of still image). Each of the image(or frame) in an animation is known as <b>sprite</b>. It can be something like this: <br><img src="{{ site.url }}/files/blog/spritesheet/sprite1.png" width="17%"> or <img src="{{ site.url }}/files/blog/spritesheet/sprite2.png" width="17%"></p>
-<p>A series of these sprites laid down in a single sheet is what we say as <b>spritesheet</b>, like this: <img src="{{ site.url }}/files/blog/spritesheet/heroSpritesheet.png" width="100%"> Just Google "spritesheet", and you gonna get a lot of them.</p>
+<p>A series of these sprites laid down in a single sheet is what we say as <b>spritesheet</b>, like this: <img src="{{ site.url }}/files/blog/spritesheet/heroSpritesheet.png" width="100%"> Just Google "spritesheet", and you gonna get a lot of them. Even better, create your own using <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a>!</p>
 <p>Animation created using a spritesheet is called <b>spritesheet animation</b>, this is what we are gonna acheive.</p>
 <p>Why to use a single image for all the sprites? Why not we just have different images and display them one by one? Hmm... We can do that, but using spritesheets have their own advantages. Having multiple images requires handling each of them individually and requires more memeory, and more images need to be loaded. While in spritesheet we need to load a single image, and can use it multiple times. Spritesheets have been in games since a long time, one classic example is pacman.</p>
 
@@ -195,7 +195,7 @@ function draw() {
 <p>In case you are drawing a background (which should be drawn first before drawing any other game object), then you don't need to clear the canvas. Since, the background image covers the whole canvas and overdraws on all the previous images.</p>
 
 <h3>Final note</h3>
-<p>This is it forthis article, hope it helped you. I encourage you to try and experiment yourself. You can do a lot using sprites. Like this:</p>
+<p>This is it for this article, hope it helped you. I encourage you to try and experiment yourself. You can do a lot using sprites. Like this:</p>
 <center><canvas id="canvas3" height="250px" width="500px" style="border: 2px solid black"></canvas></center>
 
 <p>I used spritesheet animations in <a href="https://ekshikha-gamificationframework.github.io/Pac-Man-Maths-Game/">this game</a>.</p>
@@ -203,6 +203,7 @@ function draw() {
 <ul>
 <li>This awesome sprite sheet is taken from <a href="https://www.codeandweb.com/">codeandweb.com</a>. Check out their nice tutorial on <a href="https://www.codeandweb.com/texturepacker/tutorials/how-to-create-a-sprite-sheet">How to create a sprite sheet</a> to create your own spritesheets.</li>
 <li>Want to read another article on spritesheet animations, see <a href="http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/">this</a> one.</li>
+<li>Spritesheet used in last example is taken from <a href="https://opengameart.org/">opengameart.org</a> and is a work of <a href="https://opengameart.org/content/platformer-baddies">GrafxKid</a>.</li>
 </ul>
 <script>
 var imgSrc = "{{ site.url }}/files/blog/spritesheet/heroSpritesheet.png";
