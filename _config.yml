@@ -6,3 +6,16 @@ syntax-highlighting:
   css: syntax.css
 gems:
   - jekyll-seo-tag
+title: Rishabh Gupta
+description: Rishabh Gupta's Blog
+social:
+  name: Rishabh Gupta
+  links:
+    - https://www.linkedin.com/in/rishabhgupta1997/
+    - https://plus.google.com/+RishabhGuptaEASY
+    - https://github.com/mr-easy
+    - https://www.quora.com/profile/Rishabh-Gupta-190
+    - https://codechef.com/users/easy_
+    - https://www.hackerearth.com/@rishabhg1997/
+    - https://www.hackerrank.com/_easy_
+author: Rishabh Gupta
