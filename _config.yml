@@ -4,7 +4,7 @@ permalink: /blog/:year/:month/:day/:title
 syntax-highlighting:
   enabled : true
   css: syntax.css
-plugins:
+gems:
   - jekyll-seo-tag
 title: Rishabh Gupta
 description: Rishabh Gupta's Blog
