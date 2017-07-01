@@ -3,14 +3,23 @@
 		<head>
 			<meta charset="utf-8">
 			<meta name="viewport" width="device-width, initial-scale=1.0">
+			<span itemscope itemtype ="http://schema.org/Person">
+			    <meta name="author" content="Rishabh Gupta" itemprop="name">
+			    <meta content="rishabhg1997@gmail.com" itemprop="email">
+			    <meta content="mr easy" itemprop="additionalName">
+			    <meta content="Guru Ghasidas University" itemprop="affiliation">
+			    <meta content="Kendriya Vidyalaya Noida" itemprop="alumniOf">
+			</span>
 			<meta name="description" content="Tutorial on how to create sprite sheet animations in HTML5 canvas using Javascript">
-			<meta name="author" content="Rishabh Gupta">
 			<title>Creating Spritesheet Animation in HTML5 canvas using Javascript</title>
 			<!-- link to main stylesheet -->
 			<link rel="stylesheet" type="text/css" href="/css/main.css">
+			<!-- Add icon library -->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<!-- Begin Jekyll SEO tag v2.2.3 -->
 <title>Creating Spritesheet Animation in HTML5 canvas using Javascript | Rishabh Gupta</title>
 <meta property="og:title" content="Creating Spritesheet Animation in HTML5 canvas using Javascript" />
+<meta name="author" content="Rishabh Gupta" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Tutorial on how to create sprite sheet animations in HTML5 canvas using Javascript" />
 <meta property="og:description" content="Tutorial on how to create sprite sheet animations in HTML5 canvas using Javascript" />
@@ -20,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-06-26T00:00:00+05:30" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Creating Spritesheet Animation in HTML5 canvas using Javascript","datePublished":"2017-06-26T00:00:00+05:30","dateModified":"2017-06-26T00:00:00+05:30","description":"Tutorial on how to create sprite sheet animations in HTML5 canvas using Javascript","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2017/06/26/creating-spritesheet-animation-in-html5-canvas-using-javascript"},"url":"http://localhost:4000/blog/2017/06/26/creating-spritesheet-animation-in-html5-canvas-using-javascript"}</script>
+{"@context":"http://schema.org","@type":"BlogPosting","headline":"Creating Spritesheet Animation in HTML5 canvas using Javascript","author":{"@type":"Person","name":"Rishabh Gupta"},"datePublished":"2017-06-26T00:00:00+05:30","dateModified":"2017-06-26T00:00:00+05:30","description":"Tutorial on how to create sprite sheet animations in HTML5 canvas using Javascript","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2017/06/26/creating-spritesheet-animation-in-html5-canvas-using-javascript"},"url":"http://localhost:4000/blog/2017/06/26/creating-spritesheet-animation-in-html5-canvas-using-javascript"}</script>
 <!-- End Jekyll SEO tag -->
 
 			<script>
@@ -50,11 +59,24 @@
 			<!--css for code highlight-->
 <link href="/css/syntax.css" rel="stylesheet">
 
-<h1>Creating Spritesheet Animation in HTML5 canvas using Javascript</h1>
-<p class="meta">26 Jun 2017</p>
+<article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <meta itemprop="keywords" content="" />
+  <meta itemprop="description"
+        content="Introduction In this article, I am going to tell you how to create spritesheet animations in HTML5 canvas using javascript. You can use these for creating animations in your HTML5 game. I will be using javascript(as the title says), but..." />
 
-<div class="post">
-  <h3>Introduction</h3>
+  <h1 itemprop="name">Creating Spritesheet Animation in HTML5 canvas using Javascript</h1>
+
+  <ul class="taglist">
+  
+  </ul>
+
+  <time class="published" itemprop="datePublished"
+        datetime="2017-06-26">
+    June 26, 2017
+  </time>
+
+  <div class="entry" itemprop="articleBody">
+    <h3>Introduction</h3>
 <p>In this article, I am going to tell you how to create spritesheet animations in HTML5 canvas using javascript. You can use these for creating animations in your HTML5 game. I will be using javascript(as the title says), but you can use this concept in other canvas, like canvas in Android(java).</p>
 
 <h3>What are we creating?</h3>
@@ -69,7 +91,7 @@
 
 <h3>What are sprites, spritesheet and spritesheet animation?</h3>
 <p>Animations consist of a series of images(or frames) which are shown very quickly so the viewer perceive it as moving(instead of still image). Each of the image(or frame) in an animation is known as <b>sprite</b>. It can be something like this: <br /><img src="http://localhost:4000/files/blog/spritesheet/sprite1.png" width="17%" /> or <img src="http://localhost:4000/files/blog/spritesheet/sprite2.png" width="17%" /></p>
-<p>A series of these sprites laid down in a single sheet is what we say as <b>spritesheet</b>, like this: <img src="http://localhost:4000/files/blog/spritesheet/heroSpritesheet.png" width="100%" /> Just Google "spritesheet", and you gonna get a lot of them.</p>
+<p>A series of these sprites laid down in a single sheet is what we say as <b>spritesheet</b>, like this: <img src="http://localhost:4000/files/blog/spritesheet/heroSpritesheet.png" width="100%" /> Just Google "spritesheet", and you gonna get a lot of them. Even better, create your own using <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a>!</p>
 <p>Animation created using a spritesheet is called <b>spritesheet animation</b>, this is what we are gonna acheive.</p>
 <p>Why to use a single image for all the sprites? Why not we just have different images and display them one by one? Hmm... We can do that, but using spritesheets have their own advantages. Having multiple images requires handling each of them individually and requires more memeory, and more images need to be loaded. While in spritesheet we need to load a single image, and can use it multiple times. Spritesheets have been in games since a long time, one classic example is pacman.</p>
 
@@ -357,7 +379,7 @@
 <p>In case you are drawing a background (which should be drawn first before drawing any other game object), then you don't need to clear the canvas. Since, the background image covers the whole canvas and overdraws on all the previous images.</p>
 
 <h3>Final note</h3>
-<p>This is it forthis article, hope it helped you. I encourage you to try and experiment yourself. You can do a lot using sprites. Like this:</p>
+<p>This is it for this article, hope it helped you. I encourage you to try and experiment yourself. You can do a lot using sprites. Like this:</p>
 <center><canvas id="canvas3" height="250px" width="500px" style="border: 2px solid black"></canvas></center>
 
 <p>I used spritesheet animations in <a href="https://ekshikha-gamificationframework.github.io/Pac-Man-Maths-Game/">this game</a>.</p>
@@ -365,6 +387,7 @@
 <ul>
 <li>This awesome sprite sheet is taken from <a href="https://www.codeandweb.com/">codeandweb.com</a>. Check out their nice tutorial on <a href="https://www.codeandweb.com/texturepacker/tutorials/how-to-create-a-sprite-sheet">How to create a sprite sheet</a> to create your own spritesheets.</li>
 <li>Want to read another article on spritesheet animations, see <a href="http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/">this</a> one.</li>
+<li>Spritesheet used in last example is taken from <a href="https://opengameart.org/">opengameart.org</a> and is a work of <a href="https://opengameart.org/content/platformer-baddies">GrafxKid</a>.</li>
 </ul>
 <script>
 var imgSrc = "http://localhost:4000/files/blog/spritesheet/heroSpritesheet.png";
@@ -377,7 +400,9 @@ var orangeSpriteSrc = "http://localhost:4000/files/blog/spritesheet/orange.png";
 <script src="http://localhost:4000/files/blog/spritesheet/script.js"></script>
 
 
-</div>
+  </div>
+</article>
+
 <!-- Post comments -->
 <div class="notecomments">
   <div id="disqus_thread"></div>
