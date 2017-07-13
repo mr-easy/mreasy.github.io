@@ -59,13 +59,20 @@ ul.posts li {
 }
 
 .project img {
-    float: right;
     width: 30%;
+    padding: 5px;
+}
+
+.img_left {
+    float: left;
+}
+.img_right {
+    float: right;
 }
 
 .project .duration {
     font-style: italic;
-    color: #aaaaaa;
+    color: #444444;
 }
 
 .project .subproject {
