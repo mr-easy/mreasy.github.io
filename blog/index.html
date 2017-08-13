@@ -6,6 +6,9 @@ title: Rishabh Gupta's Blog
 	<ul class="posts" itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
 
 	  {% for post in site.posts %}
-	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}" itemprop="name">{{ post.title }}</a></li>
+		  {% if post.idea != null %}
+	      {% else %}
+		  	<li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}" itemprop="name">{{ post.title }}</a></li>
+		  {% endif %}
 	  {% endfor %}
 	</ul>
