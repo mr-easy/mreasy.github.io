@@ -85,11 +85,16 @@ ul.posts li {
     float: none;
     text-align: justify;
     text-justify: inter-word;
-
 }
 .project .subproject img{
     float: none;
     width: 100%;
+}
+.project .animations img{
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 1%;
+  width: 20%;
 }
 
 /*style for social media buttons*/
