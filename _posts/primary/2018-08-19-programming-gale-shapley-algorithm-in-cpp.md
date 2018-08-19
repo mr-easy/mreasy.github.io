@@ -10,7 +10,7 @@ date: 2018-08-19
 We will be writing program for Gale-Shapley Algorithm in C++. This algorithm is used to solve the <b>Stable Marriage Problem</b>. <br />
 You can get the problem on SPOJ: https://www.spoj.com/problems/STABLEMP/ <br />
 or on codechef: https://www.codechef.com/problems/STABLEMP <br />
-You can understand the algorithm from GAle-Shapley's paper: <a href="http://www.eecs.harvard.edu/cs286r/courses/fall09/papers/galeshapley.pdf">College Admissions and the Stability of Marriage</a>
+You can understand the algorithm from Gale-Shapley's paper: <a href="http://www.eecs.harvard.edu/cs286r/courses/fall09/papers/galeshapley.pdf">College Admissions and the Stability of Marriage</a>
 </p>
 
 <h3>The Algorithm</h3>
@@ -28,10 +28,12 @@ You can understand the algorithm from GAle-Shapley's paper: <a href="http://www.
 
 <h3>Taking the input</h3>
 <p>
-So first, we will take our input. All the men are numbered from 1 to n. And all women are also numbered 1 to n. We will save the preference list as a 2d array for men(mList) and for women(wList). <br />
+So first, we will take our input. All the men are numbered from 1 to n. And all women are also numbered 1 to n. We will save the preference list as a 2d array for men(mList) and for women(wList).
+</p>
 {% highlight c++ %}
 mList[i][j] = k
 {% endhighlight %}
+<p>
 means that ith man's jth preference is woman k <br />
 for example if mList[2][1] = 3, that means man 2 's 1st preference is woman 3. <br />
 And similarly for wList.
@@ -82,20 +84,20 @@ int main() {
 {% endhighlight %}
 
 <p>
-Here manCurrentMatch is an array which stores the current engagement of every man, or set it to 0 if he is currently single.<br />
+Here manCurrentMatch is an array which stores the current engagement of every man, or set it to 0 if he is currently single.</p>
 {% highlight c++ %}
 manCurrentMatch[i] = k
 {% endhighlight %}
- means that currently man i is engaged to woman k. Similarly we have womanCurrentMatch array.<br />
+<p>means that currently man i is engaged to woman k. Similarly we have womanCurrentMatch array.<br />
 While taking the input we are also setting the all the manCurrentMatch and womanCurrentMatch as SINGLE, which is defined to be 0(since there is no woman or man numbered 0).
 </p>
 
 <p>
-manNextProposal is an array which tells that which indexed woman this man will propose next in his prefernce list.<br />
+manNextProposal is an array which tells that which indexed woman this man will propose next in his prefernce list.</p>
 {% highlight c++ %}
 manNextProposal[i] = k
 {% endhighlight %}
- means that man i will propose woman mList[i][k] next.<br />
+<p>means that man i will propose woman mList[i][k] next.<br />
 So at the begining, every man will propose to their first choice, so manNextProposal[i] = 1 for every man i.
 </p>
 
@@ -135,11 +137,13 @@ And at the end of each iteration, we will check again for a free man, if availab
 {% endhighlight %}
 
 <p>
-We can get the woman w, whom our man m will propose by:<br />
+We can get the woman w, whom our man m will propose by:</p>
 {% highlight c++ %}
 w = mList[m][manNextProposal[m]++];
 {% endhighlight %}
+<p>
 Here we are also incrementing the manNextProposal[m], this means that he will propose his next preferenced woman(if such a condition arises at some later time).
+</p>
 
 <p>
 We will first check if woman w is currently single, if she is, then engage m and w.
