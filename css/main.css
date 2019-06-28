@@ -31,9 +31,6 @@ p {
     text-justify: inter-word;
 }
 footer {
-    position:absolute;
-    bottom:0;
-    height: 50px;
     border-top: 1px solid #d5d5d5;
     font-size: .8em;
 }
